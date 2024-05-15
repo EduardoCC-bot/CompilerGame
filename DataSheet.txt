@@ -1,0 +1,18 @@
+Left Grip Button Pressed: False
+Left Trigger Button Pressed: False
+Right Grip Button Pressed: False
+Right Trigger Button Pressed: False
+A Button Pressed (Left): False
+B Button Pressed (Left): False
+X Button Pressed (Left): False
+Y Button Pressed (Left): False
+Menu Button Pressed (Left): False
+Oculus Button Pressed (Left): False
+A Button Pressed (Right): False
+B Button Pressed (Right): False
+X Button Pressed (Right): False
+Y Button Pressed (Right): False
+Menu Button Pressed (Right): False
+Oculus Button Pressed (Right): False
+Left Hand Position: (0.00, 0.00, 0.00)
+Right Hand Position: (0.00, 0.00, 0.00)
