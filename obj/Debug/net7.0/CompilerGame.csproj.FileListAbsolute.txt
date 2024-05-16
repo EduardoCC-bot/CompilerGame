@@ -1,0 +1,14 @@
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.AssemblyInfoInputs.cache
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.AssemblyInfo.cs
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.csproj.CoreCompileInputs.cache
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\bin\Debug\net7.0\CompilerGame.exe
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\bin\Debug\net7.0\CompilerGame.deps.json
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\bin\Debug\net7.0\CompilerGame.runtimeconfig.json
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\bin\Debug\net7.0\CompilerGame.dll
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\bin\Debug\net7.0\CompilerGame.pdb
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.dll
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\refint\CompilerGame.dll
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.pdb
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\CompilerGame.genruntimeconfig.cache
+C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\obj\Debug\net7.0\ref\CompilerGame.dll

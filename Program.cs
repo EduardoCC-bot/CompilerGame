@@ -1,20 +1,26 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
 using TokenList;
+using Scanner;
+using Reader = Scanner.Reader;
+using tokenList = TokenList.TokenList;
+using RDCP; 
 
-namespace CompilerGame;
-
-static class Defines{
-    //AQUI VAN LOS DEFINES DE LO QUE MAPEES EN EL COMPILADOR
-}
-
-class Program
+namespace CompilerGame
 {
-    TokenList.t_token ptr_tokenList;
-    bool boolParseError = false;
-    static void Main(string[] args)
+    class Program
     {
+        static void Main(string[] args)
+        {
+            List<string> StrTokenList = new List<string>();
+            Reader sc = new Reader();
+            tokenList tokenLists = new tokenList();
 
+            StrTokenList = sc.getTokenList();
+            tokenLists.MakeListToken(StrTokenList);
 
+            RDCP_ex parser = new RDCP_ex(tokenLists);
+            parser.parser_RDCP();
+        }
     }
 }
-

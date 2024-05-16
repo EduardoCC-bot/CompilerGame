@@ -1,0 +1,10 @@
+LG True
+LT False
+RG False
+RT False
+A False
+B False
+X False
+Y False
+ME False
+OC False

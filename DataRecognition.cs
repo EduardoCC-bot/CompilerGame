@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
 using System.IO;
@@ -92,9 +92,10 @@ public class ControllerDataSender : MonoBehaviour
         Debug.Log("Left Trigger Button Pressed: " + leftTriggerButtonPressed);
         Debug.Log("Right Grip Button Pressed: " + rightGripButtonPressed);
         Debug.Log("Right Trigger Button Pressed: " + rightTriggerButtonPressed);
-
-        if(aButtonPressed || bButtonPressed || xButtonPressed || yButtonPressed){
-            Debug.Log("********************//////////////////////////////// ALGUN BOTÓN FUE DETECTADO ////////////////////////////////********************");
+*/
+        //    if(aButtonPressed || bButtonPressed || xButtonPressed || yButtonPressed){
+       //     Debug.Log("********************//////////////////////////////// ALGUN BOTÓN FUE DETECTADO ////////////////////////////////********************");
+       /*
         }
         Debug.Log("A Button Pressed (Left): " + aButtonPressed);
         Debug.Log("B Button Pressed (Left): " + bButtonPressed);
@@ -113,7 +114,6 @@ public class ControllerDataSender : MonoBehaviour
         Debug.Log("Left Hand Position: " + leftHandPosition);
         Debug.Log("Right Hand Position: " + rightHandPosition);  
         
-        // Escribir la información en el archivo de texto
         using (StreamWriter writer = new StreamWriter(filePath, true))
         {
             writer.WriteLine("Left Grip Button Pressed: " + leftGripButtonPressed);
@@ -140,4 +140,9 @@ public class ControllerDataSender : MonoBehaviour
         }
 
     }
-}
+}       
+       
+*/ 
+
+       
+       
