@@ -73,6 +73,10 @@ public class TokenList{
         //SI LLEGA A DAR ERROR HAY QUE VALIDAR QUE EL INDEX ESTE DENTRO DEL RANGO DE LA LISTA
         return tokens[index];
     }
+
+    public int getMax(){
+        return tokens.Count;
+    }
 }
 
 public class t_token{

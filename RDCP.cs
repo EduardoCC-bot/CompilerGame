@@ -35,6 +35,7 @@ namespace RDCP
         private bool parseError;
         private int n;
 
+
         public RDCP_ex(TokenList.TokenList tokenlist)
         {
             this.n = 0;
@@ -45,7 +46,9 @@ namespace RDCP
 
         public bool CurrentToken(int NTSymbol)
         {
-            if (currentToken.GetToken(n).tokenCode == NTSymbol)
+            if(n >= currentToken.getMax() ){
+                return false;
+            }else if (currentToken.GetToken(n).tokenCode == NTSymbol)
             {
                 return true;
             }
@@ -148,11 +151,11 @@ namespace RDCP
          */
         public void Action()
         {
-            if (CurrentTokenInFirst(Constants.NT_SYMBOL_Grab))
+            if (CurrentTokenInFirst(Constants.NT_SYMBOL_Grab) && currentToken.getMax() == 1)
             {
                 Grab();
             }
-            else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Hold))
+            else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Hold)  && currentToken.getMax() == 2)
             {
                 Hold();
             }
