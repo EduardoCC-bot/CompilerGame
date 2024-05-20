@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj": {}
+    "C:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj": {
+    "C:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj",
+        "projectUniqueName": "C:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj",
         "projectName": "CompilerGame",
-        "projectPath": "c:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj",
+        "projectPath": "C:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\CompilerGame.csproj",
         "packagesPath": "C:\\Users\\ecarr\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\obj\\",
+        "outputPath": "C:\\Users\\ecarr\\Desktop\\Escuela\\6to_semestre\\Compiladores\\Poyect\\CompilerGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ecarr\\AppData\\Roaming\\NuGet\\NuGet.Config"
