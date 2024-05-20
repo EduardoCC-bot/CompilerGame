@@ -1,0 +1,44 @@
+// Assembly Instruction
+MOV     1   // Move a value
+ADV     2   // Advance 1 location
+DEC     3   // Decrement Accumulator 1
+JNZ     4   // Jump if Not equal to Zero
+JEZ     5   // Jump if Equal to Zero
+PUSH    6   // Push to Stack
+CMP     7   // Compare 2 popped values in Stack, it will subtract them, change condition flags >0 <0 =0
+END     8   // Ends the program
+LG      9   // Grab Object
+LT      10  // Hold Object
+A       11  // Move away Object
+B       12  // Get close to the object
+X       13  // Rotate left
+Y       14  // Rotate right
+
+// Processor Registers
+PC      1   // Program counter
+IR1     2   // Instruction Register 1
+IR2     3   // Instruction Register 2
+SP      4   // Stack Pointer
+CRC     5   // Crash Counter
+AC      6   // Advance Counter
+ACC     7   // Accumulator
+
+// Translate to Assembly
+LG      // LG True
+LT      // LT True
+A       // A True
+LG      // LG True
+LT      // LT True
+X       // X True
+
+// Translation from Assembly Language to Machine Language
+1 = Immediate Addressing Mode
+2 = Direct to Register Addressing Mode
+
+    LG      // LG True          0000 09
+    LT      // LT True          0001 10
+    A       // A True           0002 11
+    LG      // LG True          0003 09
+    LT      // LT True          0004 10
+    X       // X True           0005 13
+    END     // End Program      0006 08

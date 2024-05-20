@@ -98,3 +98,25 @@ ROTATE_RIGTH
     ME False 
     OC False 
 
+
+Grab:
+LG
+Hold:
+LG
+LT
+Move_away:
+LG
+LT
+A
+Get_close:
+LG
+LT
+B
+Rotate_left:
+LG
+LT
+X
+Rotate_right:
+LG
+LT
+Y

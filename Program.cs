@@ -4,7 +4,8 @@ using TokenList;
 using Scanner;
 using Reader = Scanner.Reader;
 using tokenList = TokenList.TokenList;
-using RDCP; 
+using RDCP;
+using Microsoft.VisualBasic;
 
 namespace CompilerGame
 {
@@ -17,10 +18,32 @@ namespace CompilerGame
             tokenList tokenLists = new tokenList();
 
             StrTokenList = sc.getTokenList();
-            tokenLists.MakeListToken(StrTokenList);
+            
+            iterations(StrTokenList, tokenLists);
+        }
 
-            RDCP_ex parser = new RDCP_ex(tokenLists);
-            parser.parser_RDCP();
+        public static void iterations(List<string> StrTokenList, tokenList tokenLists){
+            List<string> aux = new List<string>();
+            for(int i = 0; i < StrTokenList.Count; i++){
+                if(StrTokenList[i] is "LG True"){
+                    do{
+                        aux.Add(StrTokenList[i]);
+                        i++;
+                        if(i >= StrTokenList.Count){
+                            i++;
+                            break;
+                        }
+                    }while(StrTokenList[i] != "LG True");
+                    i--;
+                    tokenLists.MakeListToken(aux);
+                    RDCP_ex parser = new RDCP_ex(tokenLists);
+                    parser.parser_RDCP();
+                    Console.WriteLine("\n=============================");
+                    aux.Clear();
+                }
+            }
+            
+
         }
     }
 }

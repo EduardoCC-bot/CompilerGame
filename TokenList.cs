@@ -35,7 +35,7 @@ public class TokenList{
     }  
     
     public void MakeListToken(List<String> Tokens){
-        tokens.Clear();
+        this.tokens.Clear();
         foreach (string item in Tokens){
             switch(item){
                 case "LG True":
@@ -69,6 +69,10 @@ public class TokenList{
         return this.tokens;
     }
     
+    public void clearList(){
+        this.tokens.Clear();
+    }
+
     public t_token GetToken(int index){
         //SI LLEGA A DAR ERROR HAY QUE VALIDAR QUE EL INDEX ESTE DENTRO DEL RANGO DE LA LISTA
         return tokens[index];

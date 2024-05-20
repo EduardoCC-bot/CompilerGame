@@ -15,6 +15,16 @@ public class Reader{
         return this.TokenList;
     }
 
+    /*public int iteraitons(){
+        int n = 0;  
+        ReadDataSheet(@"C:\Users\ecarr\Desktop\Escuela\6to_semestre\Compiladores\Poyect\CompilerGame\controller_data.txt");
+        for(int i = 0; i < this.TokenList.Count; i++){
+            if(TokenList[i] == "LG True"){
+                n++;
+            }
+        }
+        return n;
+    }*/
     public void ReadDataSheet(String data){
         String line;    
             try
@@ -34,5 +44,10 @@ public class Reader{
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
+    }
+
+    public int simplifyList(){
+
+        return 0;
     }
 }

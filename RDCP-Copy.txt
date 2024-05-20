@@ -1,8 +1,11 @@
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using TokenList;
 
-namespace RDCP
+namespace RDCP_COPY
 {
     static class Constants
     {
@@ -23,15 +26,6 @@ namespace RDCP
         public const int NT_SYMBOL_Get_close = 6;
         public const int NT_SYMBOL_Rotate_left = 7;
         public const int NT_SYMBOL_Rotate_right = 8;
-
-        // Assembly Language Instructions
-        public const int A_LG = 9;  // Grab Object
-        public const int A_LT = 10; // Hold Object
-        public const int A_A = 11;  // Move away Object
-        public const int A_B = 12;  // Get close to Object
-        public const int A_X = 13;  // Rotate left
-        public const int A_Y = 14;  // Rotate right
-        public const int A_END = 8; // End program
     }
 
     public class RDCP_ex
@@ -41,16 +35,6 @@ namespace RDCP
         private bool parseError;
         private int n;
 
-        // Processor Registers
-        private int PC = 0;   // Program counter
-        private int IR1 = 0;  // Instruction Register 1
-        private int ACC = 0;  // Accumulator
-        private int[] mem = new int[256]; // Memory
-
-        // Flags
-        private bool FLAG_EQUAL_TO_ZERO = false;
-        private bool FLAG_GREATER_THAN_ZERO = false;
-        private bool FLAG_LESS_THAN_ZERO = false;
 
         public RDCP_ex(TokenList.TokenList tokenlist)
         {
@@ -62,11 +46,9 @@ namespace RDCP
 
         public bool CurrentToken(int NTSymbol)
         {
-            if (n >= currentToken.getMax())
-            {
+            if(n >= currentToken.getMax() ){
                 return false;
-            }
-            else if (currentToken.GetToken(n).tokenCode == NTSymbol)
+            }else if (currentToken.GetToken(n).tokenCode == NTSymbol)
             {
                 return true;
             }
@@ -80,7 +62,7 @@ namespace RDCP
         {
             if (CurrentToken(Tsymbol))
             {
-                Console.Write($"\nToken syntactically OK = {currentToken.GetToken(n).tokenSourceCodeText}");
+                Console.Write($"\nToken syntactically OK ={currentToken.GetToken(n).tokenSourceCodeText}");
                 n++;
             }
             else
@@ -118,95 +100,62 @@ namespace RDCP
                     break;
 
                 case Constants.NT_SYMBOL_Hold:
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LG)) res = true;
                     if (CurrentToken(Constants.TERMINAL_SYMBOL_LT)) res = true;
                     break;
 
                 case Constants.NT_SYMBOL_Move_away:
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LG)) res = true;
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LT)) res = true;
                     if (CurrentToken(Constants.TERMINAL_SYMBOL_A)) res = true;
                     break;
+
                 case Constants.NT_SYMBOL_Get_close:
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LG)) res = true;
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LT)) res = true;
                     if (CurrentToken(Constants.TERMINAL_SYMBOL_B)) res = true;
                     break;
 
                 case Constants.NT_SYMBOL_Rotate_left:
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LG)) res = true;
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LT)) res = true;
                     if (CurrentToken(Constants.TERMINAL_SYMBOL_X)) res = true;
                     break;
 
                 case Constants.NT_SYMBOL_Rotate_right:
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LG)) res = true;
+                    if (CurrentToken(Constants.TERMINAL_SYMBOL_LT)) res = true;
                     if (CurrentToken(Constants.TERMINAL_SYMBOL_Y)) res = true;
                     break;
             }
             return res;
         }
 
+        /*--------------------------------------------------- */
         public void Ciclo()
         {
-            if (CurrentTokenInFirst(Constants.NT_SYMBOL_Grab))
+            Action();
+            /*while (CurrentTokenInFirst(Constants.NT_SYMBOL_Action))
             {
-                Grab();
-                if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Hold))
-                {
-                    Hold();
-                    if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Move_away))
-                    {
-                        Move_away();
-                    }
-                    else if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Get_close))
-                    {
-                        GetClose();
-                    }
-                    else if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_left))
-                    {
-                        Rotate_left();
-                    }
-                    else if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_right))
-                    {
-                        Rotate_right();
-                    }
-                    else if (n >= currentToken.getMax())
-                    {
-                        // No more tokens, valid sequence ending with LT
-                        return;
-                    }
-                    else
-                    {
-                        parseError = true;
-                        Console.WriteLine("\nSyntax Error: Expected A, B, X, or Y after LT");
-                    }
-                }
-                else if (n >= currentToken.getMax())
-                {
-                    // No more tokens, valid sequence ending with LG
-                    return;
-                }
-                else if (n < currentToken.getMax() && CurrentTokenInFirst(Constants.NT_SYMBOL_Move_away) ||
-                         CurrentTokenInFirst(Constants.NT_SYMBOL_Get_close) ||
-                         CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_left) ||
-                         CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_right))
-                {
-                    parseError = true;
-                    Console.WriteLine("\nSyntax Error: Expected LT after LG");
-                }
-                else if (n >= currentToken.getMax())
-                {
-                    // No more tokens, valid sequence ending with LG
-                    return;
-                }
-            }
-            else
-            {
-                parseError = true;
-                Console.WriteLine("\nSyntax Error: Expected LG at the beginning");
-            }
+                Action();
+            }*/
         }
 
+        /*
+            GRAB
+            HOLD
+            MOVE_AWAY
+            GET_CLOSE
+            ROTATE_LEFT
+            ROTATE_RIGHT
+         */
         public void Action()
         {
-            if (CurrentTokenInFirst(Constants.NT_SYMBOL_Grab))
+            if (CurrentTokenInFirst(Constants.NT_SYMBOL_Grab) && currentToken.getMax() == 1)
             {
                 Grab();
             }
-            else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Hold))
+            else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Hold)  && currentToken.getMax() == 2)
             {
                 Hold();
             }
@@ -216,13 +165,13 @@ namespace RDCP
             }
             else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Get_close))
             {
-                GetClose();
+                Get_close();
             }
             else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_left))
             {
                 Rotate_left();
             }
-            else if (CurrentTokenInFirst(Constants.NT_SYMBOL_Rotate_right))
+            else
             {
                 Rotate_right();
             }
@@ -232,73 +181,60 @@ namespace RDCP
         public void Grab()
         {
             Expect(Constants.TERMINAL_SYMBOL_LG);
-            ExecuteInstruction(Constants.A_LG);
         }
 
-        // HOLD ::=  "LT"
+        // HOLD ::=  "LG" "LT"
         public void Hold()
         {
+            Expect(Constants.TERMINAL_SYMBOL_LG);
             Expect(Constants.TERMINAL_SYMBOL_LT);
-            ExecuteInstruction(Constants.A_LT);
         }
 
-        // MOVE_AWAY ::= "A"
+        // MOVE_AWAY ::= "LG" "LT" "A"
         public void Move_away()
         {
-            Expect(Constants.TERMINAL_SYMBOL_A);
-            ExecuteInstruction(Constants.A_A);
+            Expect(Constants.TERMINAL_SYMBOL_LG);
+            Expect(Constants.TERMINAL_SYMBOL_LT);
+            
+            if(CurrentToken(Constants.TERMINAL_SYMBOL_A)){
+                Expect(Constants.TERMINAL_SYMBOL_A);
+            }else if(CurrentToken(Constants.TERMINAL_SYMBOL_B)){
+                Expect(Constants.TERMINAL_SYMBOL_B);
+            }else if(CurrentToken(Constants.TERMINAL_SYMBOL_X)){
+                Expect(Constants.TERMINAL_SYMBOL_X);
+            }else if(CurrentToken(Constants.TERMINAL_SYMBOL_Y)){
+                Expect(Constants.TERMINAL_SYMBOL_Y);
+            }
         }
 
-        public void GetClose()
+        // GET_CLOSE ::= "LG" "LT" "B"
+        public void Get_close()
         {
+            Expect(Constants.TERMINAL_SYMBOL_LG);
+            Expect(Constants.TERMINAL_SYMBOL_LT);
             Expect(Constants.TERMINAL_SYMBOL_B);
-            ExecuteInstruction(Constants.A_B);
         }
 
-        // ROTATE_LEFT ::= "X"
+        // ROTATE_LEFT ::= "LG" "LT" "X"
         public void Rotate_left()
         {
+            Expect(Constants.TERMINAL_SYMBOL_LG);
+            Expect(Constants.TERMINAL_SYMBOL_LT);
             Expect(Constants.TERMINAL_SYMBOL_X);
-            ExecuteInstruction(Constants.A_X);
         }
 
-        // ROTATE_RIGHT ::= "Y"
+        // ROTATE_RIGHT ::= "LG" "LT" "Y"
         public void Rotate_right()
         {
+            Expect(Constants.TERMINAL_SYMBOL_LG);
+            Expect(Constants.TERMINAL_SYMBOL_LT);
             Expect(Constants.TERMINAL_SYMBOL_Y);
-            ExecuteInstruction(Constants.A_Y);
         }
 
-        // EXECUTE INSTRUCTION
-        private void ExecuteInstruction(int instruction)
-        {
-            mem[PC++] = instruction;
-            switch (instruction)
-            {
-                case Constants.A_LG:
-                    // Logic for LG
-                    break;
-                case Constants.A_LT:
-                    // Logic for LT
-                    break;
-                case Constants.A_A:
-                    // Logic for A
-                    break;
-                case Constants.A_B:
-                    // Logic for B
-                    break;
-                case Constants.A_X:
-                    // Logic for X
-                    break;
-                case Constants.A_Y:
-                    // Logic for Y
-                    break;
-                case Constants.A_END:
-                    // Logic for END
-                    break;
-                default:
-                    throw new InvalidOperationException("Unknown instruction");
-            }
+        public void ClearTokenList(){
+            tokenlist.clearList();
+            currentToken.clearList();
+            n = 0;
         }
 
         public void parser_RDCP()
